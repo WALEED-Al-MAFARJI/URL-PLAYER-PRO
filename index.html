@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Video Player | مشغل فيديو احترافي</title>
+
+        <!-- SEO Meta Tags -->
     <meta name="description" content="مشغل فيديو اونلاين عبر عنوان URL بمميزات احترافية">
     <meta name="author" content="waleed rad">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
 	<meta property="og:site_name" content="مشغل فيديو اونلاين بمميزات احترافية" /> <!-- website name -->
 	<meta property="og:site" content="url player pro" /> <!-- website link -->
-	<meta property="og:title" content="https://fs-allah10.github.io/URL-PLAYER-PRO"/> <!-- title shown in the actual shared post -->
 	<meta property="og:description" content="مشغل فيديو مجاني بمميزات احترافية" /> <!-- description shown in the actual shared post -->
 	<meta property="og:image" content="مشغل فيديو اونلاين احترافي" /> <!-- image link, make sure it's jpg -->
 	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
@@ -19,547 +19,340 @@
 	<meta name="google-site-verification" content="QLd5ze1c_3To2mA5Q-teo_V_Dp_darZAWef-OLAUYKE" />
 
     <!-- Website Title -->
-    <title>URL PLAYER PRO</title>
     
-    <!-- Styles -->
-    <link href="bootstrap.css" rel="stylesheet">
-    <link href="fontawesome-all.css" rel="stylesheet">
-    <link href="swiper.css" rel="stylesheet">
-	<link href="magnific-popup.css" rel="stylesheet">
-	<link href="styles.css" rel="stylesheet">
-	<!-- url player pro style -->
-	<link rel="stylesheet" href="path/to/plyr.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
-	<link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
-	<!-- font awesome -->
-	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">	
-
-	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@200;300;400&display=swap" rel="stylesheet">
-	
 	<!-- Favicon  -->
     <link rel="icon" href="favicon.png">
+    <style>
+        /* --- المتغيرات والتصميم العام --- */
+        :root {
+            --primary-color: #f33333;
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e1e1e1;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #f33333;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html[lang="ar"] body { font-family: 'Cairo', sans-serif; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        
+        .nav-controls .btn-icon {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .nav-controls .btn-icon:hover { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+        /* --- Main --- */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .player-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+
+        .url-input {
+            width: 100%; padding: 15px; border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background-color: var(--bg-color); color: var(--text-color);
+            font-family: inherit; font-size: 1rem; outline: none; transition: var(--transition);
+        }
+        .url-input:focus { border-color: var(--primary-color); }
+
+        .controls-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* الأزرار */
+        .btn {
+            padding: 12px 20px; border: none; border-radius: 10px;
+            cursor: pointer; font-weight: 600; font-family: inherit;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: var(--transition); flex: 1;
+        }
+
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: #f33333; transform: translateY(-2px); }
+
+        .btn-secondary { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-muted); }
+        .btn-secondary:hover { border-color: #ff4757; color: #ff4757; background-color: rgba(255, 71, 87, 0.05); }
+
+        .btn-upload {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+        }
+        .btn-upload:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: rgba(62, 100, 255, 0.05);
+        }
+
+        /* Plyr Customization */
+        .plyr {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --plyr-color-main: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg); padding: 2rem 5%; border-top: 1px solid var(--border-color); margin-top: auto;
+            text-align: center;
+        }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a {
+            width: 40px; height: 40px; border-radius: 50%;
+            background-color: var(--bg-color); color: var(--text-color);
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; transition: var(--transition);
+        }
+        .social-icons a:hover { background-color: var(--primary-color); color: white; transform: translateY(-3px); }
+
+    </style>
 </head>
-<body data-spy="scroll" data-target=".fixed-top">
-    
-    <!-- Preloader -->
-	<div class="spinner-wrapper">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-		<i class="fas fa-wifi"></i>
+<body>
+
+    <header>
+        <div class="logo"><i class="fa-solid fa-play-circle"></i> <span id="txt-logo">ProPlayer</span></div>
+        <div class="nav-controls">
+            <button class="btn-icon" onclick="toggleLanguage()"><i class="fa-solid fa-language"></i></button>
+            <button class="btn-icon" id="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
         </div>
-    </div>
-    <!-- end of preloader -->
-    
+    </header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-        <div class="container">
+    <main>
+        <div class="player-card">
+            <div class="input-group">
+                <input type="text" id="video-url" class="url-input" placeholder="أدخل رابط الفيديو هنا (MP4, YouTube)...">
+                
+                <div class="controls-row">
+                    <button class="btn btn-primary" onclick="loadVideo()">
+                        <i class="fa-solid fa-play"></i> <span id="txt-play">تشغيل</span>
+                    </button>
 
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Tivo</a> -->
+                    <button class="btn btn-upload" onclick="document.getElementById('subtitle-file').click()">
+                        <i class="fa-solid fa-closed-captioning"></i> <span id="txt-upload-sub">رفع ترجمة</span>
+                    </button>
+                    <input type="file" id="subtitle-file" accept=".vtt,.srt" hidden onchange="handleSubtitleUpload(this)">
 
-            <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.html">
-              
-              
-              <img src="logo.png" style="height: 50px;width: 50px; border: solid 1px white; border-radius: 3px;"></a><span style="font-size: 30px; color: #fff; text-align: cأنشاء حساب; ">URL PLAYER PRO</span> 
-    
-            <br>
-            <br>
-            <br>
-            
-            <!-- Mobile Menu Toggle Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-awesome fas fa-bars"></span>
-                <span class="navbar-toggler-awesome fas fa-times"></span>
-            </button>
-            <!-- end of mobile menu toggle button -->
-<div style="text-align: center;margin-left: 30%;">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#header">الرئيسية <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#player">المشغل</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#description">التفاصيل</a>
-                    </li>
-
-
-
-
-
-
-
-
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#video">شرح المشغل</a>
-                    </li>
-              
-
-
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#pricing">الأشتراكات</a>
-                    </li>
-                </ul>
-                <span class="nav-item">
-                    <a class="btn-outline-sm" href="log-in.html">تسجيل الدخول</a>
-                  
-                </span>
+                    <button class="btn btn-secondary" onclick="resetPlayer()">
+                        <i class="fa-solid fa-rotate-right"></i> <span id="txt-reset">إعادة تعيين</span>
+                    </button>
+                </div>
             </div>
+
+            <div id="player-container">
+                <video id="player" playsinline controls data-poster="https://via.placeholder.com/1280x720?text=Pro+Video+Player">
+                    <source src="" type="video/mp4" />
+                </video>
             </div>
-        </div> <!-- end of container -->
-    </nav> <!-- end of navbar -->
-    <!-- end of navigation -->
+        </div>
+    </main>
 
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">© 2024 ProPlayer</p>
+        </div>
+    </footer>
 
-    <!-- Header -->
-    <header id="header" class="header">
-        <div class="header-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-xl-5">
-                        <div class="text-container">
-                            <h1>
-                          أفضل مشغل فيديو 
-                          
-                          URL
-                          
-                          عبر الروابط </h1>
-                            <p class="p-large">مشغل فيديو احترافي اونلاين</p>
-                            <a class="btn-solid-lg page-scroll" href="https://github.com/fs-allah10/Files/raw/main/URL%20PLAYER%20PRO_1.0.apk"><i class="fa-solid fa-download"></i> تحميل التطبيق</a>
-                         <a style="color: #fff; border: solid 1px #fff;border-radius: 500px;" class="btn-outline-sm" href="https://github.com/fs-allah10/Files/raw/main/ANIME%20PLAYER.zip">Dwonload Anime Player <i class="fa-solid fa-circle-down"></i></a>
-                        </div> <!-- end of text-container -->
-                    </div> <!-- end of col -->
-                    <div class="col-lg-6 col-xl-7">
-                        <div class="image-container">
-                            <div class="img-wrapper">
-                                <img class="img-fluid" src="header-software-app.png" alt="alternative">
-                            </div> <!-- end of img-wrapper -->
-                        </div> <!-- end of image-container -->
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of header-content -->
-    </header> <!-- end of header -->
-    <svg class="header-frame" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 310"><defs><style>.cls-1{fill:#ff0000;}</style></defs><title>header-frame</title><path class="cls-1" d="M0,283.054c22.75,12.98,53.1,15.2,70.635,14.808,92.115-2.077,238.3-79.9,354.895-79.938,59.97-.019,106.17,18.059,141.58,34,47.778,21.511,47.778,21.511,90,38.938,28.418,11.731,85.344,26.169,152.992,17.971,68.127-8.255,115.933-34.963,166.492-67.393,37.467-24.032,148.6-112.008,171.753-127.963,27.951-19.26,87.771-81.155,180.71-89.341,72.016-6.343,105.479,12.388,157.434,35.467,69.73,30.976,168.93,92.28,256.514,89.405,100.992-3.315,140.276-41.7,177-64.9V0.24H0V283.054Z"/></svg>
-    <!-- end of header -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
-
-    <!-- Customers -->
-    <div class="slider-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                  <h4 style="text-align: center; color: #000;">يدعم جميع دقات الفيديو</h4>  
-            <!-- Image Slider -->
-                    <div class="slider-container">
-           <div class="swiper-container image-slider">
-          <div class="swiper-wrapper">
-           <div class="swiper-slide">
-         <img class="img-fluid" src="144.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-    <img class="img-fluid" src="240.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-       <img class="img-fluid" src="360.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-    <img class="img-fluid" src="480.png" alt="alternative">
-                                </div>
-                                
-                                <div class="swiper-slide">
-          <img class="img-fluid" src="720.png" alt="alternative">
-                                </div>
-                                
-                                
-                                
-                                
-                                <div class="swiper-slide">
-          <img class="img-fluid" src="1080.png" alt="alternative">
-                                </div>
-                                
-                                
-                                
-                                
-                                <div class="swiper-slide">
-          <img class="img-fluid" src="4k.png" alt="alternative">
-                                </div>
-                                
-                                
-                                
-                                
-                                <div class="swiper-slide">
-          <img class="img-fluid" src="8k.png" alt="alternative">
-                                </div>
-                           
-                           
-                           
-                           
-                           
-                            </div> <!-- end of swiper-wrapper -->
-                        </div> <!-- end of swiper container -->
-                    </div> <!-- end of slider-container -->
-                    <!-- end of image slider -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of slider-1 -->
-    <!-- end of customers -->
-<div id="player">
-  <br>
-  <br>
-  <br>
-  <br>
-<!--input url-->
-
-  <input class="input-url" type="text" name="Enter url" id="url" value="" placeholder="أدخل رابط الفيديو">
-  <br>
-    <button class="url-btn" type="button" onclick="history.go(0)"><i class="fa-solid fa-arrows-rotate"></i> أعادة</button>
-  <button class="url-btn" type="button" onclick="play()"><i class="fa-solid fa-play"></i>
-    تشغيل الفيديو</button>
-    
-<br>
-    <br>
-<!-- url player pro -->
-<video id="url-player-pro" 
-autoplay
-preload="true"
-playsinline controls 
-
-data-poster="url-player-pro-poster.png">
-  <source src="" type="video/mp4" />
-  <source src="" type="video/webm" />
-
-</video>
-
-</div>
-
-
-
-<br>
-<br>
-<br>
-<br>
-    <!-- Description -->
-    <div id="description">
-    <div class="cards-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="above-heading">التفاصيل</div>
-                    <h4 class="h2-heading">كيفية الأستخدام</h4>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="description-1.png" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">التشغيل السريع</h5>
-                            <p>قم بلصق رابط الفيديو بامتداد
-                            <br>
-<span style="color: red;">.mp4 .m3u8 ...</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="description-2.png" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">مشاكل التشغيل</h4>
-          <p>اذا لم يشتغل الفيديو فهنالك خطأ في رابط الفيديو</p>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-fluid" src="description-3.png" alt="alternative">
-                        </div>
-                        <div class="card-body">
-                            <h4 style="color: red;" class="card-title">تحذير</h4>
-                            <p>يرجى عدم أستخدام المشغل في مالايرضي الله</p>
-                        </div>
-                    </div>
-                    <!-- end of card -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of cards-1 -->
-    <!-- end of description -->
-
-
-   
-   
-
-    <!-- Video -->
-    <div id="video" class="basic-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- Video Preview -->
-                    <div class="image-container">
-                        <div class="video-wrapper">
-                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-effect="fadeIn">
-                                <img class="img-fluid" src="video-image.png" alt="alternative">
-                                <span class="video-play-button">
-                                    <span></span>
-                                </span>
-                            </a>
-                        </div> <!-- end of video-wrapper -->
-                    </div> <!-- end of image-container -->
-                    <!-- end of video preview -->
-
-                    <div class="p-heading">شرح كامل للمشغل </div>        
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-2 -->
-    <!-- end of video -->
-
-
-    <!-- Pricing -->
-    <div id="pricing" class="cards-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="above-heading">الأشتراكات</div>
-          <h2 class="h2-heading">أختر الأشتراك المناسب لك</h2>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- Card-->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title">BASIC</div>
-                            <div class="price"><span class="currency">$</span><span class="value">مجاني</span></div>
-                            
-                            <div class="divider"></div>
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">Email Marketing Module</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">User Control Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i><div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i><div class="media-body">Collected Data Reports</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i><div class="media-body">Planning And Evaluation</div>
-                                </li>
-                            </ul>
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="sign-up.html">أنشاء حساب</a>
-                            </div>
-                        </div>
-                    </div> <!-- end of card -->
-                    <!-- end of card -->
-
-                    <!-- Card-->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title">مميز</div>
-                            <div class="price"><span class="currency">$</span><span class="value">29.99</span></div>
-                            <div class="frequency">شهري</div>
-                            <div class="divider"></div>
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">Email Marketing Module</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">User Control Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i><div class="media-body">Collected Data Reports</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i><div class="media-body">Planning And Evaluation</div>
-                                </li>
-                            </ul>
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="sign-up.html">أنشاء حساب</a>
-                            </div>
-                        </div>
-                    </div> <!-- end of card -->
-                    <!-- end of card -->
-
-                    <!-- Card-->
-                    <div class="card">
-                        <!--<div class="label">
-                            <p class="best-value">Best Value</p>
-                        </div> -->
-                        <div class="card-body">
-                            <div class="card-title">أحترافي</div>
-                            <div class="price"><span class="currency">$</span><span class="value">39.99</span></div>
-                            <div class="frequency">شهري</div>
-                            <div class="divider"></div>
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">Email Marketing Module</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">User Control Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">Collected Data Reports</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i><div class="media-body">Planning And Evaluation</div>
-                                </li>
-                            </ul>
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="sign-up.html">أنشاء حساب</a>
-                            </div>
-                        </div>
-                    </div> <!-- end of card -->
-                    <!-- end of card -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of cards-2 -->
-    <!-- end of pricing -->
-
-
-  
-
-
-    <!-- Footer -->
-    <svg class="footer-frame" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 79"><defs><style>.cls-2{fill:#ff0000;}</style></defs><title>footer-frame</title><path class="cls-2" d="M0,72.427C143,12.138,255.5,4.577,328.644,7.943c147.721,6.8,183.881,60.242,320.83,53.737,143-6.793,167.826-68.128,293-60.9,109.095,6.3,115.68,54.364,225.251,57.319,113.58,3.064,138.8-47.711,251.189-41.8,104.012,5.474,109.713,50.4,197.369,46.572,89.549-3.91,124.375-52.563,227.622-50.155A338.646,338.646,0,0,1,1920,23.467V79.75H0V72.427Z" transform="translate(0 -0.188)"/></svg>
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="footer-col first">
-                        <h4 style="text-align: center;">URL PLAYER PRO حول</h4>
-                        <p style="text-align: center;" class="p-small">مشغل فيديو اونلاين احترافي يدعم جميع الصيغ والدقات وبسرعة فائقة</p>
-                    </div>
-                </div> <!-- end of col -->
-                <div class="col-md-4">
-                    <div class="footer-col last">
-                        <h4 style="text-align: center;">تواصل معنا</h4>
-                        <ul class="list-unstyled li-space-lg p-small">
-                            <li class="media">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="media-body">العراق/بغداد</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-envelope"></i>
-                                <div class="media-body"><a  class="white" href="mailto:wleedrad100@gmail.com">wleedrad100@gmail.com</a> <i class="fas fa-globe"></i><a class="white" href="https://fs-allah10.github.io/URL-PLAYER-PRO">موقعنا الرسمي</a></div>
-                            </li>
-                        </ul>
-                    </div> 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of footer -->  
-    <!-- end of footer -->
-
-
-    <!-- Copyright -->
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="p-small">جميع الحقوق محفوضة © 2020 <br>
-                <a href="">URL PLAYER PRO</a></p>
-                </div> <!-- end of col -->
-            </div> <!-- enf of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of copyright --> 
-    <!-- end of copyright -->
-    
-    
-    
-    
-   <!-- input scripts --> 
-<script>
-    function play() {
-        var urlm = document.getElementById("url").value;
-        var videos = document.getElementById("url-player-pro");
-        var srcs = document.createAttribute("src");
-        srcs.value = urlm;
-        videos.setAttributeNode(srcs);
-    }
-</script>
-                            
-    
-  <!-- url player pro scripts -->
-  <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
-  
-  <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
-  
     <script>
-      var controls =
-[
-    'play-large', // The large play button in the cأنشاء حساب
-    'restart', // Restart playback
-    'rewind', // Rewind by the seek time (default 10 seconds)
-    'play', // Play/pause playback
-    'fast-forward', // Fast forward by the seek time (default 10 seconds)
-    'progress', // The progress bar and scrubber for playback and buffering
-    'current-time', // The current time of playback
-    'duration',// The full duration of the media
-    
-    'settings', // Settings menu
-    'pip', // Picture-in-picture (currently Safari only)
-    'airplay', // Airplay (currently Safari only)
-    'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
-    'fullscreen' // Toggle fullscreen
-];
+        // --- إعداد المشغل ---
+        const player = new Plyr('#player', {
+            // تحديد وقت التقديم والتاخير بـ 10 ثواني
+            seekTime: 10,
+            controls: [
+                'play-large',
+                'rewind', // زر التأخير 10 ثواني
+                'play', 
+                'fast-forward', // زر التقديم 10 ثواني
+                'progress', 
+                'current-time', 
+                'mute', 
+                'captions', 
+                'settings', 'pip', 'airplay', 'fullscreen'
+            ],
+            settings: ['captions', 'quality', 'speed']
+        });
 
-var player = new Plyr('#url-player-pro', { controls });
+        // --- التعامل مع الترجمة ---
+        function handleSubtitleUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                let content = e.target.result;
+                
+                if (file.name.endsWith('.srt')) {
+                    content = srtToVtt(content);
+                }
+
+                const blob = new Blob([content], { type: 'text/vtt' });
+                const url = URL.createObjectURL(blob);
+
+                const currentSource = player.source;
+                
+                const newSource = {
+                    ...currentSource,
+                    tracks: [
+                        {
+                            kind: 'captions',
+                            label: 'Arabic (Upload)',
+                            srclang: 'ar',
+                            src: url,
+                            default: true 
+                        }
+                    ]
+                };
+
+                player.source = newSource;
+
+                const btnText = document.getElementById('txt-upload-sub');
+                const originalText = btnText.innerText;
+                btnText.innerText = (currentLang === 'ar') ? "تم الرفع!" : "Uploaded!";
+                setTimeout(() => btnText.innerText = originalText, 2000);
+            };
+
+            reader.readAsText(file);
+        }
+
+        function srtToVtt(srtData) {
+            let vtt = "WEBVTT\n\n";
+            vtt += srtData.replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g, '$1.$2');
+            return vtt;
+        }
+
+        // --- باقي الوظائف (اللغة، الثيم، الفيديو) ---
+        const translations = {
+            ar: {
+                logo: "بروبلاير",
+                play: "تشغيل",
+                upload: "رفع ترجمة",
+                reset: "إعادة",
+                placeholder: "رابط الفيديو...",
+                dir: "rtl"
+            },
+            en: {
+                logo: "ProPlayer",
+                play: "Play",
+                upload: "Upload Sub",
+                reset: "Reset",
+                placeholder: "Video URL...",
+                dir: "ltr"
+            }
+        };
+
+        let currentLang = 'ar';
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const t = translations[currentLang];
+            
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = t.dir;
+            
+            document.getElementById('txt-logo').textContent = t.logo;
+            document.getElementById('txt-play').textContent = t.play;
+            document.getElementById('txt-upload-sub').textContent = t.upload;
+            document.getElementById('txt-reset').textContent = t.reset;
+            document.getElementById('video-url').placeholder = t.placeholder;
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+        }
+
+        function loadVideo() {
+            const url = document.getElementById('video-url').value.trim();
+            if(!url) return;
+            
+            let provider = 'html5';
+            if (url.includes('youtube')) provider = 'youtube';
+            else if (url.includes('vimeo')) provider = 'vimeo';
+
+            player.source = {
+                type: 'video',
+                sources: [{ src: url, provider: provider }]
+            };
+        }
+
+        function resetPlayer() {
+            player.stop();
+            player.source = { type: 'video', sources: [] };
+            document.getElementById('video-url').value = '';
+        }
     </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    	
-    <!-- Scripts -->
-    <script src="jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
-    <script src="bootstrap.min.js"></script> <!-- Bootstrap framework -->
-    <script src="jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-    <script src="jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    <script src="scripts.js"></script> <!-- Custom scripts -->
 </body>
 </html>
